@@ -1,0 +1,3461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Manual de Diego - Excelencia en Educación y Emprendimiento</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Gill Sans Nova como alternativa a Gill Sans MT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Gupter:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f5f7ff',
+                            100: '#ebf0ff',
+                            200: '#d6e0ff',
+                            300: '#b8c8f7',
+                            400: '#94a8e8',
+                            500: '#748cdb',
+                            600: '#5b6ef5',
+                            700: '#3e4eeb',
+                            800: '#2b36a8',
+                            900: '#1a2259',
+                        },
+                        accent: {
+                            red: '#ff3b3b',
+                            light: '#ff7b7b',
+                            dark: '#d10000'
+                        },
+                        gray: {
+                            150: '#f1f5f9',
+                            250: '#e2e8f0'
+                        }
+                    },
+                    fontFamily: {
+                        'gill-sans': ['Gupter', 'Gill Sans', 'Gill Sans MT', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'slide-right': 'slideRight 0.8s ease-out forwards',
+                        'scale-in': 'scaleIn 0.7s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'wiggle': 'wiggle 2s ease-in-out infinite',
+                        'typing': 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite',
+                        'border-glow': 'borderGlow 3s ease-in-out infinite',
+                        'gradient-shift': 'gradientShift 5s ease infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(40px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-40px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        },
+                        typing: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' },
+                        },
+                        blinkCaret: {
+                            'from, to': { 'border-color': 'transparent' },
+                            '50%': { 'border-color': '#ff3b3b' },
+                        },
+                        borderGlow: {
+                            '0%, 100%': { 
+                                'box-shadow': '0 0 5px rgba(255, 59, 59, 0.5), 0 0 10px rgba(255, 59, 59, 0.3), 0 0 15px rgba(255, 59, 59, 0.1)'
+                            },
+                            '50%': { 
+                                'box-shadow': '0 0 10px rgba(255, 59, 59, 0.8), 0 0 20px rgba(255, 59, 59, 0.5), 0 0 30px rgba(255, 59, 59, 0.3)'
+                            },
+                        },
+                        gradientShift: {
+                            '0%, 100%': {
+                                'background-position': '0% 50%'
+                            },
+                            '50%': {
+                                'background-position': '100% 50%'
+                            },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT';
+            overflow-x: hidden;
+            color: #1a202c;
+            background: #ffffff;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a2259 0%, #2b36a8 50%, #ff3b3b 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .logo-loader {
+            font-family: 'Gill Sans', 'Gill Sans MT';
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .logo-loader span:first-child {
+            color: #ffffff;
+        }
+        
+        .logo-loader span:last-child {
+            color: #ff7b7b;
+        }
+        
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: spin 1.5s linear infinite;
+            position: relative;
+        }
+        
+        .loader::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 4px solid transparent;
+            border-radius: 50%;
+            border-top-color: #ff7b7b;
+            animation: spin 2s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .nav-hidden {
+            transform: translateY(-100%);
+        }
+        
+        .nav-visible {
+            transform: translateY(0);
+        }
+        
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .horizontal-scroll {
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #3e4eeb #f1f5f9;
+            -ms-overflow-style: none;
+        }
+        
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .horizontal-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background: #3e4eeb;
+            border-radius: 10px;
+        }
+        
+     
+        
+        .circular-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .circular-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a2259, #ff3b3b);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        
+        .circular-button:hover::before {
+            opacity: 1;
+        }
+        
+        .circular-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        
+        .floating-button {
+            box-shadow: 0 10px 25px -3px rgba(59, 78, 235, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .floating-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .floating-button:hover::before {
+            left: 100%;
+        }
+        
+        .floating-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -5px rgba(59, 78, 235, 0.5);
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .gradient-border {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #1a2259, #ff3b3b, #1a2259);
+            border-radius: 18px;
+            z-index: -1;
+            animation: borderAnimation 3s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        @keyframes borderAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: -1;
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 59, 59, 0.15);
+            top: -250px;
+            right: -250px;
+            animation-delay: 0s;
+        }
+        
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(27, 36, 97, 0.1);
+            bottom: -200px;
+            left: -200px;
+            animation-delay: 5s;
+        }
+        
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 59, 59, 0.1);
+            top: 50%;
+            left: 10%;
+            animation-delay: 10s;
+        }
+        
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+    .hero-bg {
+    position: relative;
+    overflow: hidden;
+    height: 85vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(26, 34, 89, 0.85) 0%, rgba(255, 59, 59, 0.2) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+        .content-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+            color: #4a5568;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff3b3b, #3e4eeb);
+            transition: width 0.4s ease;
+        }
+        
+        .tab-button.active {
+            color: #1a2259;
+        }
+        
+        .tab-button.active::before {
+            width: 100%;
+        }
+        
+        .tab-button:hover {
+            color: #1a2259;
+        }
+        
+        .tab-button:hover::before {
+            width: 100%;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .executive-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .social-icon {
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 50%;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tiktok-badge {
+            background: linear-gradient(135deg, #000000, #2a2a2a);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .brand-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.4s ease;
+        }
+        
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .profile-image {
+            border-radius: 50%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .typing-container {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .typing-text {
+            overflow: hidden;
+            border-right: 3px solid #ff3b3b;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blinkCaret .75s step-end infinite;
+        }
+        
+        .floating-element {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .rotating-element {
+            animation: spin-slow 15s linear infinite;
+        }
+        
+        .pulsing-element {
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+        
+        .moving-background {
+            background: linear-gradient(-45deg, #1a2259, #2b36a8, #3e4eeb, #ff3b3b);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .content-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-button {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero-bg {
+                height: 75vh;
+                min-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Loading Screen 
+    <div class="loading-screen" id="loadingScreen">
+        <div class="logo-loader">
+            <span>El Manual</span>
+            <span>de Diego</span>
+        </div>
+        <div class="loader"></div>
+        <p class="text-white mt-6 text-lg">Cargando excelencia...</p>
+        
+       
+        <div class="absolute top-1/4 left-1/4 w-10 h-10 bg-white/20 rounded-full floating-element"></div>
+        <div class="absolute top-1/3 right-1/4 w-16 h-16 bg-accent-red/20 rounded-full floating-element" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-12 h-12 bg-navy-700/20 rounded-full floating-element" style="animation-delay: 4s;"></div>
+    </div>
+
+    -->
+
+<nav class="fixed w-full executive-nav z-50 transition-all duration-700" id="mainNav">
+    <!-- Fondo de cristal líquido mejorado -->
+    <div class="absolute inset-0 bg-white/10 backdrop-blur-3xl border-b border-white/20"></div>
+    
+    <!-- Efecto de partículas sutil mejorado -->
+    <div class="absolute inset-0 opacity-30">
+        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-navy-800/20 rounded-full animate-pulse"></div>
+        <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-accent-red/30 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+        <div class="absolute bottom-1/4 left-2/3 w-1.5 h-1.5 bg-navy-900/15 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-3/4 right-1/4 w-1 h-1 bg-navy-700/25 rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
+    </div>
+
+    <div class="container mx-auto px-6 py-3">
+        <div class="relative flex justify-between items-center">
+          <!-- Logo con imagen personalizada -->
+<div class="flex items-center">
+    <a href="#" class="relative z-10 flex items-center space-x-3 group">
+        <div class="relative">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-white/80 to-white/60 shadow-2xl flex items-center justify-center transform transition-all duration-500 group-hover:rotate-3 group-hover:scale-105 overflow-hidden">
+                <!-- Imagen local reemplazando el texto EM -->
+                <img src="./images/miniaturas/pixeleado2.png" alt="El Manual de Diego" class="w-10 h-10 rounded-xl object-cover">
+            </div>
+            <!-- Efecto de brillo exterior mejorado -->
+            <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-accent-red/20 to-navy-800/20 opacity-0 group-hover:opacity-100 blur transition-all duration-500"></div>
+        </div>
+        <div class="flex flex-col transform transition-all duration-500 group-hover:translate-x-1">
+            <span class="text-xl font-gill-sans font-black text-navy-900 tracking-tight leading-none bg-gradient-to-r from-navy-900 to-navy-700 bg-clip-text text-transparent">
+                𝑬𝒍 𝑴𝒂𝒏𝒖𝒂𝒍
+            </span>
+            <span class="text-sm font-gill-sans font-bold text-accent-red tracking-widest leading-none">
+                𝒅𝒆 𝑫𝒊𝒆𝒈𝒐
+            </span>
+        </div>
+    </a>
+</div>
+            
+          <!-- Menú central con diseño orbital mejorado -->
+<div class="hidden lg:flex absolute left-1/2 transform -translate-x-1/2">
+    <div class="relative">
+        <!-- Anillo decorativo orbital mejorado -->
+        <div class="absolute -inset-4 rounded-full border border-navy-200/30 opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-orbital"></div>
+        
+        <div class="relative bg-white/40 backdrop-blur-2xl rounded-2xl px-8 py-3 shadow-xl border border-white/30">
+            <div class="flex space-x-10">
+                <a href="#inicio" class="orbital-menu-item group relative">
+                    <div class="flex flex-col items-center">
+                        <div class="relative">
+                            <span class="text-navy-800 font-semibold text-sm tracking-wide transition-all duration-500 group-hover:text-navy-900 group-hover:tracking-wider">Inicio</span>
+                            <!-- LÍNEA ELIMINADA -->
+                        </div>
+                    </div>
+                    <!-- Indicador de estado activo mejorado -->
+                    <div class="absolute -top-1 -right-1 w-2 h-2 bg-accent-red rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100"></div>
+                </a>
+                
+                <a href="#marcas" class="orbital-menu-item group relative">
+                    <div class="flex flex-col items-center">
+                        <div class="relative">
+                            <span class="text-navy-800 font-semibold text-sm tracking-wide transition-all duration-500 group-hover:text-navy-900 group-hover:tracking-wider">Marcas</span>
+                            <!-- LÍNEA ELIMINADA -->
+                        </div>
+                    </div>
+                    <div class="absolute -top-1 -right-1 w-2 h-2 bg-accent-red rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100"></div>
+                </a>
+                
+                <a href="#contenido" class="orbital-menu-item group relative">
+                    <div class="flex flex-col items-center">
+                        <div class="relative">
+                            <span class="text-navy-800 font-semibold text-sm tracking-wide transition-all duration-500 group-hover:text-navy-900 group-hover:tracking-wider">Contenido</span>
+                            <!-- LÍNEA ELIMINADA -->
+                        </div>
+                    </div>
+                    <div class="absolute -top-1 -right-1 w-2 h-2 bg-accent-red rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100"></div>
+                </a>
+
+                <a href="#sobre-mi" class="orbital-menu-item group relative">
+                    <div class="flex flex-col items-center">
+                        <div class="relative">
+                            <span class="text-navy-800 font-semibold text-sm tracking-wide transition-all duration-500 group-hover:text-navy-900 group-hover:tracking-wider">Sobre Mí</span>
+                            <!-- LÍNEA ELIMINADA -->
+                        </div>
+                    </div>
+                    <div class="absolute -top-1 -right-1 w-2 h-2 bg-accent-red rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100"></div>
+                </a>
+            </div>
+            
+            <!-- Efecto de energía orbital mejorado -->
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+        </div>
+    </div>
+</div>
+            
+            <!-- Botón de contacto con efecto cuántico mejorado -->
+            <div class="hidden lg:flex items-center">
+                <a href="#contacto" class="quantum-button group relative overflow-hidden">
+                    <!-- Fondo animado mejorado -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-800/90 to-navy-900/90 rounded-2xl transition-all duration-700 group-hover:scale-105"></div>
+                    
+                    <!-- Efecto de partículas en hover mejorado -->
+                    <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-red/30 to-navy-800/30 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                    
+                    <!-- Contenido del botón -->
+                    <div class="relative px-8 py-3 flex items-center space-x-3">
+                        <span class="text-white font-semibold text-sm tracking-wide">Contacto</span>
+                        <div class="transform transition-all duration-500 group-hover:translate-x-1">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Efecto de pulso cuántico mejorado -->
+                    <div class="absolute inset-0 rounded-2xl border border-white/40 opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse-slow"></div>
+                </a>
+            </div>
+            
+            <!-- Menú alternativo para tablets mejorado -->
+            <div class="hidden md:flex lg:hidden items-center space-x-6">
+                <a href="#inicio" class="text-navy-700 font-medium hover:text-navy-900 transition-colors duration-300">Inicio</a>
+                <a href="#marcas" class="text-navy-700 font-medium hover:text-navy-900 transition-colors duration-300">Marcas</a>
+                <a href="#sobre-mi" class="text-navy-700 font-medium hover:text-navy-900 transition-colors duration-300">Sobre Mí</a>
+                <a href="#contenido" class="text-navy-700 font-medium hover:text-navy-900 transition-colors duration-300">Contenido</a>
+                <a href="#contacto" class="px-5 py-2 bg-navy-900/90 text-white rounded-full text-sm font-medium hover:shadow-lg transition-all duration-300 backdrop-blur-sm">
+                    Contacto
+                </a>
+            </div>
+            
+            <!-- Botón menú móvil (CORREGIDO - MOVIDO A LA IZQUIERDA) -->
+            <div class="md:hidden flex-1 flex justify-end mr-4">
+                <button id="mobileMenuButton" class="quantum-hamburger text-navy-700 focus:outline-none">
+                    <div class="w-6 h-6 relative">
+                        <span class="absolute top-1 left-0 w-6 h-0.5 bg-navy-800 rounded-full transition-all duration-300"></span>
+                        <span class="absolute top-3 left-0 w-6 h-0.5 bg-navy-800 rounded-full transition-all duration-300"></span>
+                        <span class="absolute top-5 left-0 w-6 h-0.5 bg-navy-800 rounded-full transition-all duration-300"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu (mejorado) -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white/20 backdrop-blur-3xl border-t border-white/30 executive-nav-mobile">
+        <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+            <a href="#inicio" class="mobile-menu-item text-navy-700 font-semibold py-3 text-center rounded-xl bg-white/30 backdrop-blur-xl border border-white/30 transition-all duration-300 hover:bg-white/50 hover:scale-105 hover:shadow-lg">
+                Inicio
+            </a>
+            <a href="#marcas" class="mobile-menu-item text-navy-700 font-semibold py-3 text-center rounded-xl bg-white/30 backdrop-blur-xl border border-white/30 transition-all duration-300 hover:bg-white/50 hover:scale-105 hover:shadow-lg">
+                Marcas
+            </a>
+            <a href="#sobre-mi" class="mobile-menu-item text-navy-700 font-semibold py-3 text-center rounded-xl bg-white/30 backdrop-blur-xl border border-white/30 transition-all duration-300 hover:bg-white/50 hover:scale-105 hover:shadow-lg">
+                Sobre Mí
+            </a>
+            <a href="#contenido" class="mobile-menu-item text-navy-700 font-semibold py-3 text-center rounded-xl bg-white/30 backdrop-blur-xl border border-white/30 transition-all duration-300 hover:bg-white/50 hover:scale-105 hover:shadow-lg">
+                Contenido
+            </a>
+            <a href="#contacto" class="px-6 py-3 bg-gradient-to-r from-navy-900/90 to-navy-800/90 text-white rounded-xl text-center font-semibold transition-all duration-300 hover:shadow-xl hover:scale-105 backdrop-blur-xl">
+                Contacto
+            </a>
+        </div>
+    </div>
+</nav>
+
+<style>
+    /* Animaciones personalizadas mejoradas */
+    @keyframes quantum-pulse {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.02); }
+    }
+    
+    @keyframes orbital-rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    .animate-pulse-slow {
+        animation: quantum-pulse 3s ease-in-out infinite;
+    }
+    
+    .animate-orbital {
+        animation: orbital-rotate 20s linear infinite;
+    }
+    
+    /* Efectos de cristal mejorados - ELIMINADO EL COMPORTAMIENTO DE OCULTARSE AL SCROLL */
+    .executive-nav {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(40px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .executive-nav.scrolled {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .executive-nav.elevated {
+        transform: translateY(0) scale(1.02);
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Efectos hover para items orbitales */
+    .orbital-menu-item:hover .relative span {
+        background: linear-gradient(135deg, #1e293b, #0f172a);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    /* Botón cuántico mejorado */
+    .quantum-button {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(30, 41, 59, 0.3);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .quantum-button:hover {
+        box-shadow: 0 12px 40px rgba(30, 41, 59, 0.4);
+        transform: translateY(-2px);
+    }
+    
+    /* Hamburger cuántico - SIMPLIFICADO Y CORREGIDO */
+    .quantum-hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .quantum-hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .quantum-hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Menú móvil mejorado */
+    .executive-nav-mobile {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+    
+    .mobile-menu-item {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .mobile-menu-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+        transition: left 0.7s ease;
+    }
+    
+    .mobile-menu-item:hover::before {
+        left: 100%;
+    }
+    
+    /* Responsive refinado */
+    @media (max-width: 1023px) {
+        .executive-nav {
+            backdrop-filter: blur(30px);
+        }
+    }
+    
+    @media (max-width: 767px) {
+        .executive-nav {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(40px);
+        }
+        
+        #mobileMenu {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(40px);
+        }
+    }
+    
+    /* ELIMINADO EL COMPORTAMIENTO DE OCULTARSE AL SCROLL */
+    .nav-hidden {
+        transform: translateY(0); /* Cambiado de -100% a 0 para que nunca se oculte */
+    }
+    
+    .nav-visible {
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const nav = document.getElementById('mainNav');
+        let lastScrollTop = 0;
+        let scrollDirection = 'down';
+
+        // Efecto de scroll mejorado - ELIMINADO EL COMPORTAMIENTO DE OCULTARSE
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Determinar dirección del scroll
+            scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+            
+            // Efecto de elevación al hacer scroll (sin ocultar el menú)
+            if (scrollTop > 20) {
+                nav.classList.add('scrolled');
+                if (scrollDirection === 'up') {
+                    nav.classList.add('elevated');
+                } else {
+                    nav.classList.remove('elevated');
+                }
+            } else {
+                nav.classList.remove('scrolled', 'elevated');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+
+        // Mobile menu functionality - SIMPLIFICADO Y CORREGIDO
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                // Alternar visibilidad del menú
+                mobileMenu.classList.toggle('hidden');
+                
+                // Alternar clase active en el botón
+                this.classList.toggle('active');
+            });
+        }
+        
+        // Cerrar menú móvil al hacer clic en un enlace
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    if (mobileMenuButton) {
+                        mobileMenuButton.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if (mobileMenuButton) {
+                            mobileMenuButton.classList.remove('active');
+                        }
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<!-- Hero Section - Imagen Clara y Espacios Perfectos -->
+<section id="inicio" class="hero-bg hero-responsive relative overflow-hidden">
+    <!-- Background Image SIN overlay excesivo -->
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./images/collage/collagefinal.jpg');"></div>
+    
+    <!-- Overlay MUY suave solo para contraste -->
+    <div class="absolute inset-0 bg-navy-900/30 z-1"></div>
+    
+    <!-- Animated Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    
+    <!-- Floating elements -->
+    <div class="absolute top-20 left-10 w-6 h-6 bg-accent-red/30 rounded-full floating-element" style="animation-delay: 1s;"></div>
+    <div class="absolute top-40 right-20 w-10 h-10 bg-white/20 rounded-full floating-element" style="animation-delay: 3s;"></div>
+    <div class="absolute bottom-40 left-20 w-8 h-8 bg-navy-700/30 rounded-full floating-element" style="animation-delay: 5s;"></div>
+    
+    <!-- Contenido Hero - Espacios ultra compactos -->
+    <div class="container mx-auto px-4 hero-content text-center pt-16 pb-8">
+        <div class="max-w-4xl mx-auto section-hidden">
+            <br>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-gill-sans font-bold text-white mb-3 leading-tight">
+                <br>
+                𝚃𝚛𝚊𝚗𝚜𝚏𝚘𝚛𝚖𝚊 𝚝𝚞 <span class="text-accent-red">𝙴𝚍𝚞𝚌𝚊𝚌𝚒𝚘𝚗</span><br>
+                𝚢 <span class="text-white">𝙴𝚖𝚙𝚛𝚎𝚗𝚍𝚒𝚖𝚒𝚎𝚗𝚝𝚘</span>
+            </h1>
+            
+            <!-- Typing Animation -->
+            <div class="mb-4 h-10 flex justify-center items-center">
+                <div class="typing-container">
+                    <span id="typing-text" class="typing-text text-xl md:text-2xl text-white font-gill-sans font-medium"></span>
+                </div>
+            </div>
+            
+            <p class="text-xl text-white/90 mb-4 max-w-2xl mx-auto">
+                Descubre estrategias, cursos y recursos para potenciar tus habilidades y alcanzar el éxito en tu camino educativo y emprendedor.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 mb-6">
+                <a href="#contenido" class="px-6 py-3 bg-accent-red text-white rounded-full text-center font-medium hover:shadow-lg transition-all duration-300 floating-button flex items-center justify-center text-sm">
+                    <span>Explorar Contenido</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#sobre-mi" class="px-6 py-3 glass-effect text-white rounded-full text-center font-medium hover:bg-white/30 transition-all duration-300 flex items-center justify-center text-sm">
+                    <span>Conoce Más</span>
+                    <i class="fas fa-user ml-2"></i>
+                </a>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="flex justify-center space-x-4 pt-2">
+                <a href="https://www.tiktok.com/@elmanualdediego" class="social-icon p-3 text-white bg-black/20 hover:bg-black/30 circular-button">
+                    <i class="fab fa-tiktok text-lg"></i>
+                </a>
+                <a href="https://www.instagram.com/elmanualdediego/" class="social-icon p-3 text-white bg-gradient-to-br from-purple-500 to-pink-500 circular-button">
+                    <i class="fab fa-instagram text-lg"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCgaXggAs5XOGb5TH_-bDV7g/videos" class="social-icon p-3 text-white bg-red-600 circular-button">
+                    <i class="fab fa-youtube text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Overlay MUY ligero para no opacar la imagen */
+    .hero-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(26, 34, 89, 0.4) 0%, rgba(255, 59, 59, 0.1) 100%);
+        z-index: 1;
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Responsive mínimo para móviles */
+    @media (max-width: 480px) {
+        .hero-bg {
+            height: 75vh;
+            min-height: 500px;
+        }
+        
+        .hero-content {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .typing-container {
+            margin-bottom: 1rem;
+            height: 2.5rem;
+        }
+        
+        .typing-text {
+            font-size: 1.1rem;
+        }
+        
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>
+
+<!-- Marcas Section -->
+<section id="marcas" class="py-20 bg-gray-150 relative overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 moving-background opacity-5"></div>
+    
+    <!-- Floating elements -->
+    <div class="absolute top-10 left-10 w-12 h-12 bg-accent-red/10 rounded-full floating-element rotating-element"></div>
+    <div class="absolute bottom-10 right-10 w-16 h-16 bg-navy-700/10 rounded-full floating-element" style="animation-delay: 2s;"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 section-hidden">
+            <h2 class="text-3xl md:text-4xl font-gill-sans font-bold text-navy-900 mb-4">ꜰᴇᴀᴛᴜʀɪɴɢꜱ <span class="text-accent-red">ᴅᴇꜱᴛᴀᴄᴀᴅᴏꜱ</span></h2>
+            <p class="text-lg text-navy-700 max-w-2xl mx-auto">
+                Marcas y organizaciones con las que hemos trabajado para llevar contenido de calidad e inspirar a más personas.
+            </p>
+        </div>
+        
+        <div class="horizontal-scroll pb-6 flex justify-center space-x-12 md:space-x-16 lg:space-x-20 overflow-x-auto">
+          <!-- Pinterest -->
+            <div class="flex-shrink-0 section-hidden">
+                <div class="brand-logo w-40 h-40 flex items-center justify-center bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="./images/featurings/pinterest.jpg" alt="Pinterest" class="w-full h-full object-contain p-2">
+                </div>
+                <p class="text-center mt-4 font-medium text-navy-700 text-lg">Pinterest</p>
+            </div>
+            
+            <!-- Instituciones Educativas -->
+            <div class="flex-shrink-0 section-hidden">
+                <div class="brand-logo w-40 h-40 flex items-center justify-center bg-white rounded-2xl shadow-lg p-6">
+                    <i class="fas fa-graduation-cap text-6xl text-navy-700"></i>
+                </div>
+                <p class="text-center mt-4 font-medium text-navy-700 text-lg">Instituciones Educativas</p>
+            </div>
+            
+            <!-- Rebook -->
+            <div class="flex-shrink-0 section-hidden">
+                <div class="brand-logo w-40 h-40 flex items-center justify-center bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="./images/featurings/rebook.png" alt="Rebook" class="w-full h-full object-contain p-2">
+                </div>
+                <p class="text-center mt-4 font-medium text-navy-700 text-lg">Rebook</p>
+            </div>
+            
+            <!-- JeanBook -->
+            <div class="flex-shrink-0 section-hidden">
+                <div class="brand-logo w-40 h-40 flex items-center justify-center bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <img src="./images/featurings/jeanbook.png" alt="JeanBook" class="w-full h-full object-cover">
+                </div>
+                <p class="text-center mt-4 font-medium text-navy-700 text-lg">JeanBook</p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Estilo específico para Pinterest hover rojo */
+    .pinterest-hover:hover .pinterest-icon {
+        color: #ff3b3b !important;
+        transition: color 0.3s ease;
+    }
+    
+    /* Asegurar que Pinterest se vea en móviles */
+    @media (max-width: 640px) {
+        .horizontal-scroll {
+            justify-content: flex-start;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+</style>
+
+<!-- Contenido Section -->
+<section id="contenido" class="py-20 bg-gradient-to-b from-navy-50 to-white relative overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 moving-background opacity-5"></div>
+    
+    <!-- Floating elements -->
+    <div class="absolute top-20 left-20 w-16 h-16 bg-white/30 rounded-full floating-element rotating-element"></div>
+    <div class="absolute bottom-20 right-20 w-20 h-20 bg-accent-red/10 rounded-full floating-element" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/4 w-12 h-12 bg-navy-700/20 rounded-full floating-element" style="animation-delay: 4s;"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 section-hidden">
+            <h2 class="text-3xl md:text-4xl font-gill-sans font-bold text-navy-900 mb-4">ɴᴜᴇꜱᴛʀᴏ <span class="text-accent-red">ᴄᴏɴᴛᴇɴɪᴅᴏ</span></h2>
+            <p class="text-lg text-navy-700 max-w-2xl mx-auto">
+                Accede a recursos educativos de alta calidad diseñados para impulsar tu crecimiento personal y profesional.
+            </p>
+        </div>
+        
+        <!-- Tabs Navigation - OPTIMIZADO -->
+        <div class="content-tabs-container">
+            <div class="content-tabs mb-12 section-hidden">
+                <button class="tab-button active" data-tab="cursos">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Cursos</span>
+                </button>
+                <button class="tab-button" data-tab="videos">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Videos</span>
+                </button>
+                <button class="tab-button" data-tab="recursos">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Recursos Gratuitos</span>
+                </button>
+                <button class="tab-button" data-tab="becas">
+                    <i class="fas fa-award"></i>
+                    <span>Becas</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Tabs Content -->
+        <div class="tab-content-wrapper">
+            <div class="tab-content active" id="cursos-tab">
+                <div class="tab-content-grid">
+                    <!-- Curso 1 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Curso Emprendimiento" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 px-3 py-1 bg-accent-red text-white text-sm font-medium rounded-full">
+                                Premium
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-gill-sans font-bold text-navy-900">Emprendimiento desde Cero</h3>
+                                <span class="text-lg font-bold text-navy-900">$XX</span>
+                            </div>
+                            <p class="text-navy-700 mb-4">Aprende a crear y hacer crecer tu negocio desde los fundamentos hasta estrategias avanzadas.</p>
+                            <a href="#" class="block w-full py-3 bg-navy-900 text-white text-center font-medium rounded-full hover:shadow-lg transition-all duration-300 floating-button">
+                                Comprar Ahora
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Curso 2 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Curso Estudios" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 px-3 py-1 bg-navy-700 text-white text-sm font-medium rounded-full">
+                                Popular
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-gill-sans font-bold text-navy-900">Técnicas de Estudio Avanzadas</h3>
+                                <span class="text-lg font-bold text-navy-900">$XX</span>
+                            </div>
+                            <p class="text-navy-700 mb-4">Domina métodos comprobados para mejorar tu retención y comprensión en cualquier área de estudio.</p>
+                            <a href="#" class="block w-full py-3 bg-navy-900 text-white text-center font-medium rounded-full hover:shadow-lg transition-all duration-300 floating-button">
+                                Comprar Ahora
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Curso 3 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Curso Productividad" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 px-3 py-1 bg-accent-red text-white text-sm font-medium rounded-full">
+                                Nuevo
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-gill-sans font-bold text-navy-900">Productividad Máxima</h3>
+                                <span class="text-lg font-bold text-navy-900">$XX</span>
+                            </div>
+                            <p class="text-navy-700 mb-4">Aumenta tu eficiencia con técnicas probadas para gestionar tu tiempo y maximizar tus resultados.</p>
+                            <a href="#" class="block w-full py-3 bg-navy-900 text-white text-center font-medium rounded-full hover:shadow-lg transition-all duration-300 floating-button">
+                                Comprar Ahora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="videos-tab">
+                <div class="videos-layout">
+                    <!-- Video Principal -->
+                    <div class="video-main section-hidden">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/e6lHt0tJx40" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-2">EL MEJOR MÉTODO DE ESTUDIO | El manual de Diego 🧠📕</h3>
+                        <p class="text-navy-700">Aprende los fundamentos esenciales para mejorar tu técnica de estudio. <span class="block mt-1 text-sm text-navy-500">14 k vistas</span></p>
+                    </div>
+                    
+                    <!-- Lista de Videos -->
+                    <div class="video-sidebar section-hidden">
+                        <div class="video-list">
+                            <div class="p-4 border-b border-navy-100">
+                                <h3 class="font-bold text-navy-900">Últimos videos</h3>
+                            </div>
+                            
+                            <!-- Video 1 -->
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="https://i.ytimg.com/vi/5g7AcROpqog/hqdefault.jpg" alt="Video thumbnail">
+                                </div>
+                                <div class="video-info">
+                                    <h4>28 HORAS EN LA UNIVERSIDAD l Tec de Monterrey y CORTOMETRAJE 💙🎥 l El manual de Diego</h4>
+                                    <p>17 k vistas</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Video 2 -->
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="https://i.ytimg.com/vi/w4F6nTH5QIE/hqdefault.jpg" alt="Video thumbnail">
+                                </div>
+                                <div class="video-info">
+                                    <h4>De pinta en Vancouver, Canadá por 5 días | Esquiando, volando, y mucho más 🇨🇦| El manual de Diego</h4>
+                                    <p>1 K vistas</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Video 3 -->
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="https://i.ytimg.com/vi/kF2UFB8wJ7w/hqdefault.jpg" alt="Video thumbnail">
+                                </div>
+                                <div class="video-info">
+                                    <h4>CAPIBARAS en el MEJOR ACUARIO de México, El acuario MICHIN 🇲🇽🪼🐬| El manual de Diego</h4>
+                                    <p>21 k vistas</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-6">
+                            <a href="https://www.youtube.com/@ElmanualdeDiego/videos" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Ver más videos
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="recursos-tab">
+                <div class="tab-content-grid">
+                    <!-- Recurso 1 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Recurso 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Guía de Emprendimiento</h3>
+                            <p class="text-navy-700 mb-4">Una guía completa con los pasos esenciales para iniciar tu negocio.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Descargar
+                                <i class="fas fa-download ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Recurso 2 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Recurso 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Plantilla de Plan de Negocios</h3>
+                            <p class="text-navy-700 mb-4">Una plantilla estructurada para desarrollar tu plan de negocios paso a paso.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Descargar
+                                <i class="fas fa-download ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Recurso 3 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Recurso 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Estrategias de Estudio</h3>
+                            <p class="text-navy-700 mb-4">Una recopilación de técnicas efectivas para mejorar tu aprendizaje.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Descargar
+                                <i class="fas fa-download ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="becas-tab">
+                <div class="tab-content-grid">
+                    <!-- Beca 1 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beca 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Beca de Emprendimiento</h3>
+                            <p class="text-navy-700 mb-4">Oportunidad para emprendedores que buscan desarrollar sus proyectos con apoyo financiero.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Aplicar
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Beca 2 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beca 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Beca de Excelencia Académica</h3>
+                            <p class="text-navy-700 mb-4">Reconocimiento para estudiantes destacados que buscan continuar su formación.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Aplicar
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Beca 3 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beca 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Beca de Innovación</h3>
+                            <p class="text-navy-700 mb-4">Para proyectos innovadores que buscan transformar la educación y el emprendimiento.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Aplicar
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* BOTONES OPTIMIZADOS - SIN LÍNEAS, MÁS EJECUTIVOS */
+    .content-tabs-container {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .content-tabs {
+        display: flex;
+        justify-content: flex-start;
+        min-width: max-content;
+        padding: 0 1rem;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .tab-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 2rem;
+        color: #4a5568;
+        font-weight: 600;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-size: 0.9rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .tab-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.6s ease;
+    }
+
+    .tab-button:hover {
+        background: #1a2259;
+        color: white;
+        border-color: #1a2259;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 34, 89, 0.25);
+    }
+
+    .tab-button:hover::before {
+        left: 100%;
+    }
+
+    .tab-button.active {
+        background: #1a2259;
+        color: white;
+        border-color: #1a2259;
+        box-shadow: 0 6px 20px rgba(26, 34, 89, 0.2);
+        transform: translateY(-1px);
+    }
+
+    /* Para pantallas medianas y grandes */
+    @media (min-width: 768px) {
+        .content-tabs {
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .tab-button {
+            padding: 0.85rem 2rem;
+            font-size: 1rem;
+        }
+    }
+
+    /* CONTENIDO DE PESTAÑAS OPTIMIZADO */
+    .tab-content-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        padding: 1rem 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-content {
+        display: none;
+        width: 100%;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .tab-content-grid {
+        display: flex;
+        justify-content: flex-start;
+        gap: 2rem;
+        padding: 0 1rem;
+        width: max-content;
+        margin: 0 auto;
+    }
+
+    /* Para pantallas grandes, centramos el contenido */
+    @media (min-width: 1024px) {
+        .tab-content-grid {
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+    }
+
+    /* CARDS OPTIMIZADAS */
+    .tab-content-grid > div {
+        width: 320px;
+        flex-shrink: 0;
+    }
+
+    .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .floating-button {
+        transition: all 0.3s ease;
+    }
+
+    .floating-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* VIDEOS OPTIMIZADOS */
+    .videos-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .videos-layout {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .video-main {
+        width: 100%;
+    }
+
+    .video-sidebar {
+        width: 100%;
+    }
+
+    .video-list {
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-item {
+        display: flex;
+        padding: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+
+    .video-item:hover {
+        background-color: #f7fafc;
+    }
+
+    .video-thumbnail {
+        width: 6rem;
+        height: 3.5rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        margin-right: 1rem;
+    }
+
+    .video-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-info h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #1a2259;
+        margin-bottom: 0.25rem;
+        line-height: 1.3;
+    }
+
+    .video-info p {
+        font-size: 0.8rem;
+        color: #718096;
+    }
+
+    .video-embed {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .video-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* ANIMACIONES OPTIMIZADAS */
+    .section-hidden {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .section-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .floating-element {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .rotating-element {
+        animation: rotate 20s linear infinite;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .moving-background {
+        background: linear-gradient(45deg, #1a2259, #e53e3e, #1a2259);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* SCROLL OPTIMIZADO */
+    .content-tabs-container::-webkit-scrollbar,
+    .tab-content-wrapper::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .content-tabs-container::-webkit-scrollbar-track,
+    .tab-content-wrapper::-webkit-scrollbar-track {
+        background: #f1f5f9;
+        border-radius: 10px;
+    }
+
+    .content-tabs-container::-webkit-scrollbar-thumb,
+    .tab-content-wrapper::-webkit-scrollbar-thumb {
+        background: #cbd5e0;
+        border-radius: 10px;
+    }
+
+    .content-tabs-container::-webkit-scrollbar-thumb:hover,
+    .tab-content-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #a0aec0;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Funcionalidad de pestañas optimizada
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remover clase active de todos los botones y contenidos
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Agregar clase active al botón clickeado
+                button.classList.add('active');
+                
+                // Mostrar el contenido correspondiente
+                const tabId = button.getAttribute('data-tab') + '-tab';
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Animación de elementos al hacer scroll - OPTIMIZADA
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observar solo elementos visibles
+        document.querySelectorAll('.section-hidden').forEach(el => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+
+
+
+
+
+<!-- Sobre Mí Section - Versión Ejecutiva Corregida -->
+<section id="sobre-mi" class="py-16 lg:py-24 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+    <!-- Elegant Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-white via-gray-50/80 to-white"></div>
+    
+    <!-- Subtle Grid Pattern -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(26,34,89,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(26,34,89,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+    
+    <!-- Geometric Accents -->
+    <div class="absolute top-10 left-5 lg:top-20 lg:left-20 w-20 h-20 lg:w-32 lg:h-32 border border-navy-900/5 rounded-xl transform rotate-12"></div>
+    <div class="absolute bottom-10 right-5 lg:bottom-32 lg:right-32 w-16 h-16 lg:w-24 lg:h-24 bg-accent-red/3 rounded-full"></div>
+    
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+        <!-- Header Section -->
+        <div class="text-center mb-12 lg:mb-16 section-hidden">
+            <span class="text-accent-red font-gill-sans font-semibold tracking-widest text-xs lg:text-sm uppercase mb-3 lg:mb-4 block">EXCELENCIA ACADÉMICA & EMPRENDIMIENTO</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-gill-sans font-bold text-navy-900 mb-4 lg:mb-6 leading-tight">
+                ᴄʀᴇᴀɴᴅᴏ ᴇʟ ꜰᴜᴛᴜʀᴏ
+                <span class="text-accent-red block mt-2">ᴅᴇꜱᴅᴇ ᴇʟ ᴘʀᴇꜱᴇɴᴛᴇ</span>
+            </h2>
+       <!--  ELIMINAR ESTAS COSAS  <div class="w-20 lg:w-24 h-1 bg-gradient-to-r from-accent-red to-navy-900 mx-auto mb-6 lg:mb-8"></div> -->  
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+            <!-- Content Column -->
+            <div class="lg:w-1/2 section-hidden order-2 lg:order-1">
+                <!-- Mission Statement -->
+                <div class="mb-8 lg:mb-12">
+                    <h3 class="text-xl sm:text-2xl lg:text-2xl font-gill-sans font-bold text-navy-900 mb-4 lg:mb-6">Transformando Educación a Través de Experiencias Reales</h3>
+                    <p class="text-lg sm:text-xl font-gill-sans text-navy-700 leading-relaxed tracking-wide mb-6 lg:mb-8">
+                        Como estudiante de <span class="font-semibold text-navy-900">dos carreras</span> y creador de contenido, 
+                        fusiono el rigor académico con el emprendimiento práctico para inspirar a la próxima generación de líderes (ustedes)
+                    </p>
+                </div>
+
+                <!-- Key Points -->
+                <div class="space-y-6 lg:space-y-8 mb-8 lg:mb-12">
+                    
+                    
+                    <div class="flex items-start space-x-4 lg:space-x-6 group">
+                        <div class="flex-shrink-0 w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-navy-900 to-accent-red rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-rocket text-white text-sm lg:text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg lg:text-xl font-gill-sans font-bold text-navy-900 mb-2 lg:mb-3">Emprendimiento</h4>
+                            <p class="text-base lg:text-lg font-gill-sans text-navy-700 leading-relaxed">
+                                Comprendiendo la vida estudiantil para ayudarles con consejos que me hubiera gustado recibir
+                                <span class="font-semibold">Seámos agentes de cambio</span>.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4 lg:space-x-6 group">
+                        <div class="flex-shrink-0 w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-navy-900 to-accent-red rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-bullhorn text-white text-sm lg:text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg lg:text-xl font-gill-sans font-bold text-navy-900 mb-2 lg:mb-3">Vocería Juvenil</h4>
+                            <p class="text-base lg:text-lg font-gill-sans text-navy-700 leading-relaxed">
+                                Representando y <span class="font-semibold">amplificando las voces de la comunidad juvenil</span> 
+                                en espacios de diálogo y toma de decisiones.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semblanza Desplegable Centrada -->
+                <div class="flex justify-center mb-8 lg:mb-12">
+                    <div class="w-full max-w-md">
+                        <button id="semblanza-btn" class="group w-full bg-white border-2 border-navy-900/20 text-navy-900 rounded-2xl p-1.5 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:border-accent-red/40">
+                            <div class="bg-white rounded-xl py-4 px-6 flex items-center justify-between">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-navy-900 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-user text-white text-lg"></i>
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-gill-sans font-bold text-navy-900 text-lg">Ver Semblanza</h4>
+                                        <p class="text-navy-600 text-sm">Conoce mi historia completa</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-down text-navy-900 transform transition-transform duration-300" id="semblanza-arrow"></i>
+                            </div>
+                        </button>
+                        
+                        <!-- Contenido Desplegable -->
+                        <div id="semblanza-content" class="mt-4 bg-white/90 backdrop-blur-sm rounded-2xl border border-navy-900/10 shadow-lg overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                            <div class="p-6">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-1 h-full bg-gradient-to-b from-accent-red to-navy-900 rounded-full mt-2"></div>
+                                    <div>
+                                        <p class="text-navy-700 leading-relaxed">
+                                            "Hola! Soy Diego Salazar, o tal vez me conoces como El Manual de Diego; Estudio dos carreras, una en la Universidad Nacional Autónoma de México y otra en el Instituto Técnológico y de Estudios Superiores de Monterrey (Tec de MTY pa los compas). En esta, mi marca personal busco ayudarles a crecer académica y personalmente pues me gusta brindarles consejos que me hubiera gustado recibir a lo largo de este camino, pero también me gusta ser un espacio de escucha para todos ustedes, así que ¡Bienvenidos!"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Visual Column -->
+            <div class="lg:w-1/2 flex justify-center section-hidden order-1 lg:order-2 mb-8 lg:mb-0">
+                <div class="relative w-full max-w-md lg:max-w-none">
+                    <!-- Main Profile Container -->
+                    <div class="relative z-10 mb-8 lg:mb-12 flex justify-center">
+                        <div class="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-gradient-to-br from-navy-900 via-navy-800 to-accent-red rounded-3xl p-1.5 shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                            <div class="w-full h-full bg-white rounded-2xl overflow-hidden">
+                                <img src="./images/periodico.png" alt="Diego Rubén Salazar - Fundador de El Manual de Diego" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Institutions & Stats -->
+                    <div class="grid grid-cols-3 gap-4 lg:gap-6 items-center mb-8 lg:mb-12">
+                        <!-- UNAM -->
+                        <div class="text-center group">
+                            <div class="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 bg-white rounded-2xl shadow-lg border border-gray-100 mx-auto mb-3 lg:mb-4 overflow-hidden transform group-hover:scale-110 transition-all duration-300 floating-element" style="animation-delay: 0.2s;">
+                                <img src="./images/escuelas/unam.png" alt="UNAM" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="font-gill-sans font-bold text-navy-900 text-xs lg:text-sm">Universidad Nacional Autónoma de México</p>
+                        </div>
+                        
+                 <!-- Stats - Versión Ejecutiva Premium -->
+<div class="text-center">
+    <div class="relative group">
+        <!-- Fondo principal con gradiente mejorado -->
+        <div class="bg-gradient-to-br from-navy-900 via-navy-800 to-accent-red py-4 lg:py-5 px-6 lg:px-8 rounded-2xl shadow-2xl transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-3xl relative overflow-hidden">
+            
+            <!-- Efecto de brillo interior -->
+            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Patrón de puntos sutiles -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-2 left-4 w-1 h-1 bg-white rounded-full"></div>
+                <div class="absolute top-4 right-6 w-1 h-1 bg-white rounded-full"></div>
+                <div class="absolute bottom-3 left-6 w-1 h-1 bg-white rounded-full"></div>
+            </div>
+            
+            <!-- Contenido del stats -->
+            <div class="relative z-10">
+                <!-- Número principal -->
+                <div class="font-gill-sans font-black text-2xl lg:text-3xl text-white mb-2 tracking-tight">
+                    900K+
+                </div>
+                
+                <!-- Texto descriptivo -->
+                <div class="flex items-center justify-center space-x-2">
+                    <div class="w-2 h-2 bg-accent-red rounded-full animate-pulse"></div>
+                    <div class="text-white/90 text-xs font-semibold uppercase tracking-widest">
+                        Comunidad Activa
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Efecto de borde luminoso en hover -->
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-accent-red to-navy-900 rounded-2xl opacity-0 group-hover:opacity-30 blur-sm transition-opacity duration-500 -z-10"></div>
+        </div>
+        
+        <!-- Elemento decorativo flotante -->
+        <div class="absolute -top-1 -right-1 w-3 h-3 bg-accent-red rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-150"></div>
+    </div>
+</div>
+                        
+                        <!-- Tec de Monterrey -->
+                        <div class="text-center group">
+                            <div class="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 bg-white rounded-2xl shadow-lg border border-gray-100 mx-auto mb-3 lg:mb-4 overflow-hidden transform group-hover:scale-110 transition-all duration-300 floating-element" style="animation-delay: 0.4s;">
+                                <img src="./images/escuelas/itesm.svg" alt="Tec de Monterrey" class="w-full h-full object-contain p-2">
+                            </div>
+                            <p class="font-gill-sans font-bold text-navy-900 text-xs lg:text-sm">Tecnológico de Monterrey</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Impact Quote - Con Imagen en el Círculo -->
+<div class="mt-12 lg:mt-16 section-hidden">
+    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-500 max-w-2xl mx-auto">
+        <div class="flex items-start">
+            <i class="fas fa-quote-right text-accent-red/40 text-3xl mr-6 mt-2"></i>
+            <div>
+                <p class="text-2xl font-gill-sans font-medium text-navy-800 italic leading-relaxed mb-4">
+                    "Los jóvenes somos el futuro, pero necesitamos construir el presente."
+                </p>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-navy-900 to-accent-red rounded-full flex items-center justify-center overflow-hidden border-2 border-white shadow-md">
+                        <!-- Imagen local que se adapta al círculo -->
+                        <img src="./images/miniaturas/pixeleado.png" 
+                             alt="Diego Rubén Salazar" 
+                             class="w-full h-full object-cover"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Fallback si la imagen no carga -->
+                        <div class="hidden w-full h-full items-center justify-center bg-gradient-to-br from-navy-900 to-accent-red">
+                            <span class="text-white font-bold text-sm">DR</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-gill-sans font-semibold text-navy-900">Diego Rubén Salazar</p>
+                        <p class="text-sm text-navy-600">Fundador - El Manual de Diego</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Call to Action -->
+        <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center mt-8 lg:mt-12">
+            <a href="#contenido" class="group px-6 lg:px-8 py-3 lg:py-4 bg-navy-900 text-white rounded-xl font-gill-sans font-semibold hover:shadow-2xl transition-all duration-300 flex items-center justify-center hover:bg-navy-800 transform hover:-translate-y-1 flex-1 sm:flex-none text-sm lg:text-base max-w-xs mx-auto sm:mx-0">
+                <span>Explorar Contenido</span>
+                <i class="fas fa-arrow-right ml-2 lg:ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+            </a>
+            <a href="#contacto" class="group px-6 lg:px-8 py-3 lg:py-4 border-2 border-navy-700 text-navy-700 rounded-xl font-gill-sans font-semibold hover:bg-navy-700 hover:text-white transition-all duration-300 flex items-center justify-center transform hover:-translate-y-1 flex-1 sm:flex-none text-sm lg:text-base max-w-xs mx-auto sm:mx-0">
+                <span>Colaborar Juntos</span>
+                <i class="fas fa-handshake ml-2 lg:ml-3 group-hover:scale-110 transition-transform duration-300"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const semblanzaBtn = document.getElementById('semblanza-btn');
+        const semblanzaContent = document.getElementById('semblanza-content');
+        const semblanzaArrow = document.getElementById('semblanza-arrow');
+        let isOpen = false;
+
+        semblanzaBtn.addEventListener('click', function() {
+            if (isOpen) {
+                // Cerrar
+                semblanzaContent.style.maxHeight = '0';
+                semblanzaArrow.style.transform = 'rotate(0deg)';
+                semblanzaBtn.classList.remove('border-accent-red/60', 'shadow-xl');
+                semblanzaBtn.classList.add('border-navy-900/20');
+            } else {
+                // Abrir
+                semblanzaContent.style.maxHeight = semblanzaContent.scrollHeight + 'px';
+                semblanzaArrow.style.transform = 'rotate(180deg)';
+                semblanzaBtn.classList.remove('border-navy-900/20');
+                semblanzaBtn.classList.add('border-accent-red/60', 'shadow-xl');
+            }
+            isOpen = !isOpen;
+        });
+    });
+</script>
+
+<style>
+    /* Animaciones mejoradas para logos */
+    @keyframes float-logos {
+        0%, 100% {
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            transform: translateY(-8px) scale(1.05);
+        }
+    }
+    
+    .floating-element {
+        animation: float-logos 4s ease-in-out infinite;
+    }
+    
+    /* Optimización para el botón de semblanza */
+    #semblanza-btn {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    #semblanza-content {
+        transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Optimizaciones responsive adicionales */
+    @media (max-width: 640px) {
+        #sobre-mi .grid.grid-cols-3 {
+            gap: 2rem;
+        }
+        
+        #sobre-mi .text-center p {
+            font-size: 0.7rem;
+            line-height: 1.2;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        #sobre-mi .grid.grid-cols-3 {
+            gap: 1rem;
+        }
+        
+        #sobre-mi .w-16.h-16 {
+            width: 3.5rem;
+            height: 3.5rem;
+        }
+    }
+</style>
+
+
+
+<!-- Sección Contacto - Sin Duplicados -->
+<section id="contacto" class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+    <!-- Fondo elegante -->
+    <div class="absolute inset-0 bg-gradient-to-br from-white via-gray-50/80 to-white"></div>
+    
+    <!-- Patrón sutil -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(26,34,89,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(26,34,89,0.02)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+    
+    <!-- Elementos decorativos -->
+    <div class="absolute top-20 left-10 w-16 h-16 border border-navy-900/5 rounded-xl transform rotate-12"></div>
+    <div class="absolute bottom-20 right-10 w-20 h-20 bg-accent-red/3 rounded-full"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Header Section -->
+        <div class="text-center mb-16 section-hidden">
+            <span class="text-accent-red font-gill-sans font-semibold tracking-widest text-sm uppercase mb-4 block">CONÉCTATE CONMIGO</span>
+            <h2 class="text-4xl md:text-5xl font-gill-sans font-bold text-navy-900 mb-6 leading-tight">
+                ꜱɪɢᴜᴇᴍᴇ ᴇɴ
+                <span class="text-accent-red block mt-2">ᴍɪꜱ ʀᴇᴅᴇꜱ</span>
+            </h2>
+            <p class="text-lg text-navy-700 max-w-2xl mx-auto">
+                Mantente actualizado con mi contenido más reciente y únete a esta comunidad.
+            </p>
+        </div>
+
+       <!-- Grid Centrado de Redes Sociales - SOLO PARA DESKTOP -->
+<div class="hidden md:flex justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl w-full">
+        
+        <!-- Instagram Card con Embed -->
+        <div class="section-hidden">
+            <div class="bg-white rounded-2xl shadow-xl hover-shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden h-full">
+                <!-- Header Instagram -->
+                <div class="bg-gradient-to-r from-purple-500 to-pink-500 p-6 text-white">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                            <i class="fab fa-instagram text-2xl text-pink-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-gill-sans font-bold">Instagram</h3>
+                            <p class="text-white/90 text-sm">@elmanualdediego</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Embed Real de Instagram -->
+                <div class="p-6 flex flex-col h-full">
+                    <div class="flex-grow">
+                        <div class="instagram-embed-container rounded-xl overflow-hidden mb-4 bg-gray-50" style="min-height: 400px;">
+                            <!-- Instagram Feed Embed -->
+                            <iframe 
+                                src="https://www.instagram.com/elmanualdediego/embed" 
+                                width="100%" 
+                                height="400" 
+                                frameborder="0" 
+                                scrolling="no" 
+                                allowtransparency="true"
+                                style="border: none; overflow: hidden; border-radius: 12px;"
+                                onload="this.style.visibility='visible';"
+                                onerror="this.style.display='none'; document.getElementById('instagram-fallback').style.display='block';">
+                            </iframe>
+                            <!-- Fallback si el embed no carga -->
+                            <div id="instagram-fallback" class="hidden text-center py-8">
+                                <i class="fab fa-instagram text-4xl text-pink-500 mb-3"></i>
+                                <p class="text-navy-700 font-medium">Contenido de Instagram</p>
+                                <p class="text-navy-600 text-sm mt-1">Visita nuestro perfil para ver el contenido completo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-sm text-navy-600 mb-4">
+                            <span>📸 Fotos y Videos</span>
+                            <span>💬 Historias Diarias</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.instagram.com/elmanualdediego/" 
+                       target="_blank" 
+                       class="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-semibold text-center block hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 mt-auto">
+                        <i class="fab fa-instagram"></i>
+                        <span>Seguir en Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TikTok Card Elegante - MISMO TAMAÑO -->
+        <div class="section-hidden">
+            <div class="bg-white rounded-2xl shadow-xl hover-shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden h-full">
+                <!-- Header TikTok -->
+                <div class="bg-gradient-to-r from-gray-900 to-gray-700 p-6 text-white">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                            <i class="fab fa-tiktok text-2xl text-gray-900"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-gill-sans font-bold">TikTok</h3>
+                            <p class="text-white/90 text-sm">@elmanualdediego</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contenido TikTok - MISMA ALTURA -->
+                <div class="p-6 flex flex-col h-full">
+                    <div class="flex-grow flex flex-col justify-center items-center mb-6">
+                        <div class="text-center mb-6">
+                            <i class="fab fa-tiktok text-6xl text-gray-800 mb-4"></i>
+                            <h4 class="text-xl font-gill-sans font-bold text-navy-900 mb-2">Videos Virales</h4>
+                            <p class="text-navy-600 text-center">Contenido corto y tendencias educativas para la comunidad</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 w-full max-w-xs mb-6">
+                            <div class="text-center p-3 bg-gray-100 rounded-lg">
+                                <div class="text-lg font-bold text-gray-700">900k+</div>
+                                <div class="text-xs text-gray-600">Seguidores</div>
+                            </div>
+                            <div class="text-center p-3 bg-red-50 rounded-lg">
+                                <div class="text-lg font-bold text-red-600">1M+</div>
+                                <div class="text-xs text-red-500">Visualizaciones</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Botón Sutil de TikTok -->
+                        <div class="w-full max-w-xs">
+                            <a href="https://www.tiktok.com/@elmanualdediego" 
+                               target="_blank" 
+                               class="w-full py-3 bg-gradient-to-r from-gray-800 to-gray-600 text-white rounded-xl font-semibold text-center block hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 border border-gray-500/30">
+                                <i class="fab fa-tiktok text-lg"></i>
+                                <span>Explorar TikTok</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón Principal Sutil -->
+                    <a href="https://www.tiktok.com/@elmanualdediego" 
+                       target="_blank" 
+                       class="w-full py-3 bg-gradient-to-r from-gray-900 to-gray-700 text-white rounded-xl font-semibold text-center block hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 mt-4 border border-gray-600/30">
+                        <i class="fab fa-tiktok"></i>
+                        <span>Seguir en TikTok</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Versión Móvil - Scroll Horizontal - SOLO PARA MÓVIL -->
+<div class="md:hidden mt-8">
+    <div class="flex overflow-x-auto space-x-4 pb-4 -mx-4 px-4 scrollbar-hide horizontal-scroll">
+        <!-- Instagram Card Móvil -->
+        <div class="flex-shrink-0 w-80">
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden h-full">
+                <div class="bg-gradient-to-r from-purple-500 to-pink-500 p-4 text-white">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                            <i class="fab fa-instagram text-xl text-pink-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-gill-sans font-bold">Instagram</h3>
+                            <p class="text-white/90 text-xs">@elmanualdediego</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col h-full">
+                    <div class="flex-grow">
+                        <div class="instagram-mobile-embed mb-3" style="height: 250px; background: #fafafa; border-radius: 8px; overflow: hidden;">
+                            <iframe 
+                                src="https://www.instagram.com/elmanualdediego/embed" 
+                                width="100%" 
+                                height="250" 
+                                frameborder="0" 
+                                scrolling="no"
+                                style="border: none;">
+                            </iframe>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/elmanualdediego/" 
+                       target="_blank" 
+                       class="w-full py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold text-center block text-sm mt-auto">
+                        Seguir en Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TikTok Card Móvil - MISMO TAMAÑO -->
+        <div class="flex-shrink-0 w-80">
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden h-full">
+                <div class="bg-gradient-to-r from-gray-900 to-gray-700 p-4 text-white">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                            <i class="fab fa-tiktok text-xl text-gray-900"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-gill-sans font-bold">TikTok</h3>
+                            <p class="text-white/90 text-xs">@elmanualdediego</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 flex flex-col h-full">
+                    <div class="flex-grow flex flex-col justify-center items-center mb-4">
+                        <div class="text-center mb-4">
+                            <i class="fab fa-tiktok text-4xl text-gray-800 mb-2"></i>
+                            <p class="text-navy-600 text-sm text-center">Videos cortos y tendencias educativas</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 w-full mb-4">
+                            <div class="text-center p-2 bg-gray-100 rounded">
+                                <div class="text-sm font-bold text-gray-700">500K+</div>
+                                <div class="text-xs text-gray-600">Seguidores</div>
+                            </div>
+                            <div class="text-center p-2 bg-red-50 rounded">
+                                <div class="text-sm font-bold text-red-600">1M+</div>
+                                <div class="text-xs text-red-500">Views</div>
+                            </div>
+                        </div>
+                        <!-- Botón Sutil Móvil -->
+                        <a href="https://www.tiktok.com/@elmanualdediego" 
+                           target="_blank" 
+                           class="w-full py-2 bg-gradient-to-r from-gray-800 to-gray-600 text-white rounded-lg font-semibold text-center block text-sm border border-gray-500/30">
+                            Explorar Contenido
+                        </a>
+                    </div>
+                    <!-- Botón Principal Móvil -->
+                    <a href="https://www.tiktok.com/@elmanualdediego" 
+                       target="_blank" 
+                       class="w-full py-2 bg-gradient-to-r from-gray-900 to-gray-700 text-white rounded-lg font-semibold text-center block text-sm mt-2 border border-gray-600/30">
+                        Seguir en TikTok
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+     <!-- Sección de Correo de Contacto Mejorada -->
+<div class="max-w-3xl mx-auto mt-16 section-hidden">
+    <style>
+    /* Estilos específicos para la sección de correo mejorada */
+    .contacto-email-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.8) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(26, 34, 89, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+    }
+    
+    .contacto-email-card:hover {
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+    }
+    
+    .email-button {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(26, 34, 89, 0.15);
+    }
+    
+    .email-button:hover {
+        background: rgba(248, 250, 252, 0.95);
+        border-color: rgba(255, 59, 59, 0.3);
+        box-shadow: 0 6px 20px rgba(26, 34, 89, 0.1);
+    }
+    
+    .email-icon-wrapper {
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, rgba(255,59,59,0.05) 0%, rgba(26,34,89,0.05) 100%);
+    }
+    
+    .email-icon-wrapper:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, rgba(255,59,59,0.1) 0%, rgba(26,34,89,0.1) 100%);
+    }
+</style>
+    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-navy-100/50 shadow-sm hover:shadow-lg transition-all duration-500">
+        <div class="text-center mb-8">
+            <div class="w-14 h-14 bg-gradient-to-br from-navy-900/90 to-accent-red/90 rounded-xl flex items-center justify-center mx-auto mb-4 transform hover:scale-110 transition-transform duration-300">
+                <i class="fas fa-envelope-open-text text-white text-xl"></i>
+            </div>
+            <h3 class="text-xl font-gill-sans font-semibold text-navy-900 mb-3">Colaboraciones & Consultas</h3>
+            <p class="text-navy-600/80 text-sm max-w-md mx-auto leading-relaxed">
+                ¿Tienes un proyecto en mente o necesitas asesoría? Estamos aquí para ayudarte.
+            </p>
+        </div>
+        
+        <div class="bg-gradient-to-br from-navy-50/50 to-white/30 rounded-xl p-6 border border-navy-100/30">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center space-x-4 flex-1">
+                    <div class="w-10 h-10 bg-gradient-to-br from-navy-800 to-navy-600 rounded-lg flex items-center justify-center shadow-sm">
+                        <i class="fas fa-at text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-gill-sans font-semibold text-navy-900 text-base">Contacto Directo</h4>
+                        <p class="text-navy-600/70 text-sm">Escríbenos directamente</p>
+                    </div>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <a href="mailto:elmanualdediego@gmail.com" 
+                       class="group inline-flex items-center space-x-3 px-5 py-2.5 bg-white text-navy-700 rounded-lg font-medium hover:bg-navy-50 transition-all duration-300 border border-navy-200/60 hover:border-navy-300/80 hover:shadow-md">
+                        <div class="w-8 h-8 bg-gradient-to-br from-accent-red/10 to-navy-900/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-paper-plane text-accent-red text-xs"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="text-navy-900 font-semibold text-sm block">elmanualdediego@gmail.com</span>
+                            <span class="text-navy-500 text-xs">Haz clic para enviar correo</span>
+                        </div>
+                    </a>
+                    <p class="text-xs text-navy-500/70 mt-3 font-medium">
+                        ⚡ Respuesta rápida garantizada
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+      
+    </div>
+</section>
+
+<style>
+    /* Animaciones para la sección */
+    .section-hidden {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    
+    .section-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Efectos hover mejorados */
+    .shadow-xl {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .hover-shadow-2xl:hover {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Scroll horizontal para móviles */
+    .horizontal-scroll {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .horizontal-scroll::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Asegurar altura consistente en desktop */
+    @media (min-width: 768px) {
+        .h-calc {
+            height: calc(100% - 120px);
+        }
+    }
+    
+    /* Responsive optimizations */
+    @media (max-width: 768px) {
+        #contacto .grid.grid-cols-1.md\\:grid-cols-3 {
+            gap: 1rem;
+        }
+        
+        #contacto .text-3xl {
+            font-size: 1.75rem;
+        }
+        
+        #contacto .p-8 {
+            padding: 1.5rem;
+        }
+        
+        /* Asegurar que las cards móviles tengan buen tamaño */
+        .flex-shrink-0.w-80 {
+            width: 280px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        #contacto h2.text-4xl {
+            font-size: 2rem;
+        }
+        
+        .flex-shrink-0.w-80 {
+            width: 260px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animación al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('#contacto .section-hidden').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Cargar script de Instagram embed
+        function loadInstagramEmbed() {
+            const instagramScript = document.createElement('script');
+            instagramScript.src = '//www.instagram.com/embed.js';
+            instagramScript.async = true;
+            document.body.appendChild(instagramScript);
+        }
+        
+        // Cargar después de un delay
+        setTimeout(loadInstagramEmbed, 1000);
+    });
+</script>
+
+
+
+
+
+
+<!-- Footer Mejorado -->
+<footer id="contacto" class="bg-navy-900 text-white py-16 relative overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 moving-background opacity-10"></div>
+    
+    <!-- Floating elements -->
+    <div class="absolute top-10 left-10 w-16 h-16 bg-white/10 rounded-full floating-element"></div>
+    <div class="absolute bottom-10 right-10 w-20 h-20 bg-accent-red/10 rounded-full floating-element" style="animation-delay: 3s;"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Grid de 3 columnas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-12">
+            
+            <!-- Columna Izquierda - Logo y Redes Sociales -->
+            <div class="text-center md:text-left">
+                <h3 class="text-3xl font-gill-sans font-bold mb-6">
+                    <span class="text-white">𝑬𝒍 𝑴𝒂𝒏𝒖𝒂𝒍</span>
+                    <span class="text-accent-red">𝒅𝒆 𝑫𝒊𝒆𝒈𝒐</span>
+                </h3>
+                <p class="text-navy-200 mb-6 text-base leading-relaxed">
+                    Transformando la educación y el emprendimiento a través de contenido de calidad y recursos accesibles.
+                </p>
+                
+                <!-- Botones de redes sociales -->
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="https://www.tiktok.com/@elmanualdediego" 
+                       class="social-icon p-3 text-white bg-black/40 circular-button hover:bg-black/60 transition-all duration-300">
+                        <i class="fab fa-tiktok text-lg"></i>
+                    </a>
+                    <a href="https://www.instagram.com/elmanualdediego/" 
+                       class="social-icon p-3 text-white bg-gradient-to-br from-purple-500 to-pink-500 circular-button hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+                        <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCgaXggAs5XOGb5TH_-bDV7g/videos" 
+                       class="social-icon p-3 text-white bg-red-600 circular-button hover:bg-red-700 transition-all duration-300">
+                        <i class="fab fa-youtube text-lg"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Columna Central - Menú de Navegación -->
+            <div class="text-center">
+                <h4 class="font-gill-sans font-bold text-lg mb-6 text-accent-red">Navegación</h4>
+                <div class="flex flex-col space-y-4">
+                    <a href="#inicio" class="text-navy-200 hover:text-white transition-colors duration-300 font-medium text-sm py-1">
+                        Inicio
+                    </a>
+                    <a href="#marcas" class="text-navy-200 hover:text-white transition-colors duration-300 font-medium text-sm py-1">
+                        Marcas
+                    </a>
+                    <a href="#contenido" class="text-navy-200 hover:text-white transition-colors duration-300 font-medium text-sm py-1">
+                        Contenido
+                    </a>
+                    <a href="#sobre-mi" class="text-navy-200 hover:text-white transition-colors duration-300 font-medium text-sm py-1">
+                        Sobre Mí
+                    </a>
+                    <a href="#contacto" class="text-navy-200 hover:text-white transition-colors duration-300 font-medium text-sm py-1">
+                        Contacto
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Columna Derecha - Documentos Legales -->
+            <div class="text-center md:text-right">
+                <h4 class="font-gill-sans font-bold text-lg mb-6 text-accent-red">Documentos Legales</h4>
+                <div class="flex flex-col space-y-4">
+                    <a href="./documents/aviso-privacidad.pdf" 
+                       target="_blank"
+                       class="group text-navy-200 hover:text-white transition-all duration-300 font-medium text-sm py-2 px-4 bg-navy-800/30 rounded-lg hover:bg-navy-800/50 border border-navy-700/30 hover:border-navy-600/50">
+                        <div class="flex items-center justify-center md:justify-end space-x-2">
+                            <i class="fas fa-file-pdf text-accent-red group-hover:scale-110 transition-transform duration-300"></i>
+                            <span>Aviso de Privacidad</span>
+                        </div>
+                    </a>
+                    <a href="./documents/politicas-uso.pdf" 
+                       target="_blank"
+                       class="group text-navy-200 hover:text-white transition-all duration-300 font-medium text-sm py-2 px-4 bg-navy-800/30 rounded-lg hover:bg-navy-800/50 border border-navy-700/30 hover:border-navy-600/50">
+                        <div class="flex items-center justify-center md:justify-end space-x-2">
+                            <i class="fas fa-shield-alt text-accent-red group-hover:scale-110 transition-transform duration-300"></i>
+                            <span>Políticas de Uso</span>
+                        </div>
+                    </a>
+                    <a href="./documents/proteccion-datos.pdf" 
+                       target="_blank"
+                       class="group text-navy-200 hover:text-white transition-all duration-300 font-medium text-sm py-2 px-4 bg-navy-800/30 rounded-lg hover:bg-navy-800/50 border border-navy-700/30 hover:border-navy-600/50">
+                        <div class="flex items-center justify-center md:justify-end space-x-2">
+                            <i class="fas fa-database text-accent-red group-hover:scale-110 transition-transform duration-300"></i>
+                            <span>Protección de Datos</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Línea divisoria y copyright -->
+        <div class="border-t border-navy-700 pt-8 text-center text-navy-300">
+            <p class="text-base">&copy; 2025. Diego Rubén Salazar Jiménez. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2 text-navy-400">Comprometidos con la excelencia educativa y el emprendimiento responsable.</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Estilos adicionales para el footer mejorado */
+    .footer-link {
+        transition: all 0.3s ease;
+    }
+    
+    .footer-link:hover {
+        transform: translateX(5px);
+    }
+    
+    .document-link {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .document-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+</style>
+
+    <script>
+        // Typing Animation
+        const typingText = document.getElementById('typing-text');
+        const phrases = [
+            "Sigamos creciendo juntos en El Manual de Diego",
+            "Excelencia",
+            "Emprendimiento", 
+            "Conocimiento"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isEnd = false;
+        
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                // Deleting chars
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                // Writing chars
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            // Initial typing speed
+            let typeSpeed = 100;
+            
+            if (isDeleting) {
+                typeSpeed /= 2; // Faster when deleting
+            }
+            
+            // If word is complete
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isEnd = true;
+                typeSpeed = 1500; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex++;
+                if (phraseIndex >= phrases.length) {
+                    phraseIndex = 0;
+                }
+            }
+            
+            setTimeout(type, typeSpeed);
+        }
+        
+        // Start typing animation
+        setTimeout(type, 1000);
+        
+        // Loading Screen
+     //   window.addEventListener('load', function() {
+     //       const loadingScreen = document.getElementById('loadingScreen');
+      //      setTimeout(() => {
+      //          loadingScreen.style.opacity = '0';
+      //          setTimeout(() => {
+       //             loadingScreen.style.display = 'none';
+         //       }, 500);
+         //   }, 2500);
+     //   });
+
+      
+    </script>
+</body>
+</html>
+
+
+<!--
+AÑADIR ESTO EN SECCION CONTENIDO PARA CORREGIR LA PALABRA CONTENIDO PARA PONERLA EN BLANCO
+
+<section id="contenido" class="py-20 bg-gradient-to-b from-navy-50 to-white relative overflow-hidden">
+    <div class="absolute inset-0 moving-background opacity-8"></div>
+    
+    <div class="absolute inset-0 particles-container"></div>
+    
+    <div class="absolute inset-0 grid-pattern opacity-10"></div>
+    
+    <div class="absolute top-20 left-20 w-16 h-16 bg-white/30 rounded-full floating-element rotating-element pulse-element"></div>
+    <div class="absolute bottom-20 right-20 w-20 h-20 bg-accent-red/10 rounded-full floating-element pulse-element" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/4 w-12 h-12 bg-navy-700/20 rounded-full floating-element pulse-element" style="animation-delay: 4s;"></div>
+    
+    <div class="absolute top-40 right-40 w-8 h-8 bg-accent-red/20 rounded-full floating-element rotating-element" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-40 left-40 w-10 h-10 bg-navy-900/10 rounded-full floating-element" style="animation-delay: 3s;"></div>
+    <div class="absolute top-3/4 right-1/4 w-14 h-14 bg-white/20 rounded-full floating-element pulse-element" style="animation-delay: 5s;"></div>
+    
+    <div class="absolute top-10 right-10 w-24 h-24 border-2 border-navy-900/10 rounded-lg floating-element rotating-element-slow" style="animation-delay: 0.5s;"></div>
+    <div class="absolute bottom-10 left-10 w-16 h-16 border-2 border-accent-red/20 rounded-full floating-element" style="animation-delay: 2.5s;"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 section-hidden">
+            <h2 class="text-3xl md:text-4xl font-gill-sans font-bold text-navy-900 mb-4">Nuestro <span class="text-accent-red">Contenido</span></h2>
+            <p class="text-lg text-navy-700 max-w-2xl mx-auto">
+                Accede a recursos educativos de alta calidad diseñados para impulsar tu crecimiento personal y profesional.
+            </p>
+        </div>
+        
+        <div class="content-tabs-container">
+            <div class="content-tabs mb-12 section-hidden">
+                <button class="tab-button active" data-tab="cursos">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Cursos</span>
+                </button>
+                <button class="tab-button" data-tab="videos">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Videos</span>
+                </button>
+                <button class="tab-button" data-tab="recursos">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Recursos Gratuitos</span>
+                </button>
+                <button class="tab-button" data-tab="becas">
+                    <i class="fas fa-award"></i>
+                    <span>Becas</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="tab-content-wrapper">
+            <div class="tab-content active" id="cursos-tab">
+                <div class="tab-content-grid">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Curso Emprendimiento" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 px-3 py-1 bg-accent-red text-white text-sm font-medium rounded-full">
+                                Premium
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-gill-sans font-bold text-navy-900">Emprendimiento desde Cero</h3>
+                                <span class="text-lg font-bold text-navy-900">$XX</span>
+                            </div>
+                            <p class="text-navy-700 mb-4">Aprende a crear y hacer crecer tu negocio desde los fundamentos hasta estrategias avanzadas.</p>
+                            <a href="#" class="block w-full py-3 bg-navy-900 text-white text-center font-medium rounded-full hover:shadow-lg transition-all duration-300 floating-button">
+                                Comprar Ahora
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Curso Estudios" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 px-3 py-1 bg-navy-700 text-white text-sm font-medium rounded-full">
+                                Popular
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-gill-sans font-bold text-navy-900">Técnicas de Estudio Avanzadas</h3>
+                                <span class="text-lg font-bold text-navy-900">$XX</span>
+                            </div>
+                            <p class="text-navy-700 mb-4">Domina métodos comprobados para mejorar tu retención y comprensión en cualquier área de estudio.</p>
+                            <a href="#" class="block w-full py-3 bg-navy-900 text-white text-center font-medium rounded-full hover:shadow-lg transition-all duration-300 floating-button">
+                                Comprar Ahora
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Curso Productividad" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 px-3 py-1 bg-accent-red text-white text-sm font-medium rounded-full">
+                                Nuevo
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-gill-sans font-bold text-navy-900">Productividad Máxima</h3>
+                                <span class="text-lg font-bold text-navy-900">$XX</span>
+                            </div>
+                            <p class="text-navy-700 mb-4">Aumenta tu eficiencia con técnicas probadas para gestionar tu tiempo y maximizar tus resultados.</p>
+                            <a href="#" class="block w-full py-3 bg-navy-900 text-white text-center font-medium rounded-full hover:shadow-lg transition-all duration-300 floating-button">
+                                Comprar Ahora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="videos-tab">
+                <div class="videos-layout">
+                    <div class="video-main section-hidden">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/e6lHt0tJx40" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-2">EL MEJOR MÉTODO DE ESTUDIO | El manual de Diego 🧠📕</h3>
+                        <p class="text-navy-700">Aprende los fundamentos esenciales para mejorar tu técnica de estudio. <span class="block mt-1 text-sm text-navy-500">14 k vistas</span></p>
+                    </div>
+                    
+                    <div class="video-sidebar section-hidden">
+                        <div class="video-list">
+                            <div class="p-4 border-b border-navy-100">
+                                <h3 class="font-bold text-navy-900">Últimos videos</h3>
+                            </div>
+                            
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="https://i.ytimg.com/vi/5g7AcROpqog/hqdefault.jpg" alt="Video thumbnail">
+                                </div>
+                                <div class="video-info">
+                                    <h4>28 HORAS EN LA UNIVERSIDAD l Tec de Monterrey y CORTOMETRAJE 💙🎥 l El manual de Diego</h4>
+                                    <p>17 k vistas</p>
+                                </div>
+                            </div>
+                            
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="https://i.ytimg.com/vi/w4F6nTH5QIE/hqdefault.jpg" alt="Video thumbnail">
+                                </div>
+                                <div class="video-info">
+                                    <h4>De pinta en Vancouver, Canadá por 5 días | Esquiando, volando, y mucho más 🇨🇦| El manual de Diego</h4>
+                                    <p>1 K vistas</p>
+                                </div>
+                            </div>
+                            
+                            <div class="video-item">
+                                <div class="video-thumbnail">
+                                    <img src="https://i.ytimg.com/vi/kF2UFB8wJ7w/hqdefault.jpg" alt="Video thumbnail">
+                                </div>
+                                <div class="video-info">
+                                    <h4>CAPIBARAS en el MEJOR ACUARIO de México, El acuario MICHIN 🇲🇽🪼🐬| El manual de Diego</h4>
+                                    <p>21 k vistas</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-6">
+                            <a href="https://www.youtube.com/@ElmanualdeDiego/videos" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Ver más videos
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="recursos-tab">
+                <div class="tab-content-grid">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Recurso 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Guía de Emprendimiento</h3>
+                            <p class="text-navy-700 mb-4">Una guía completa con los pasos esenciales para iniciar tu negocio.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Descargar
+                                <i class="fas fa-download ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Recurso 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Plantilla de Plan de Negocios</h3>
+                            <p class="text-navy-700 mb-4">Una plantilla estructurada para desarrollar tu plan de negocios paso a paso.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Descargar
+                                <i class="fas fa-download ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Recurso 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Estrategias de Estudio</h3>
+                            <p class="text-navy-700 mb-4">Una recopilación de técnicas efectivas para mejorar tu aprendizaje.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Descargar
+                                <i class="fas fa-download ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="becas-tab">
+                <div class="tab-content-grid">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beca 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Beca de Emprendimiento</h3>
+                            <p class="text-navy-700 mb-4">Oportunidad para emprendedores que buscan desarrollar sus proyectos con apoyo financiero.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Aplicar
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beca 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Beca de Excelencia Académica</h3>
+                            <p class="text-navy-700 mb-4">Reconocimiento para estudiantes destacados que buscan continuar su formación.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Aplicar
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover section-hidden">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beca 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-gill-sans font-bold text-navy-900 mb-3">Beca de Innovación</h3>
+                            <p class="text-navy-700 mb-4">Para proyectos innovadores que buscan transformar la educación y el emprendimiento.</p>
+                            <a href="#" class="inline-flex items-center text-navy-900 font-medium hover:text-accent-red transition-colors duration-300">
+                                Aplicar
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* MEJORAS DE ANIMACIONES Y FONDO - SIN MODIFICAR CÓDIGO EXISTENTE */
+    
+    /* Fondo mejorado con gradiente animado más dinámico */
+    .moving-background {
+        background: linear-gradient(-45deg, #1a2259, #2d3a8c, #e53e3e, #ff6b6b, #1a2259);
+        background-size: 400% 400%;
+        animation: gradient 12s ease infinite;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Efecto de partículas */
+    .particles-container {
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 2px, transparent 0),
+            radial-gradient(circle at 80% 70%, rgba(234, 88, 12, 0.1) 1px, transparent 0),
+            radial-gradient(circle at 40% 80%, rgba(26, 34, 89, 0.1) 3px, transparent 0),
+            radial-gradient(circle at 60% 20%, rgba(255, 255, 255, 0.1) 2px, transparent 0);
+        background-size: 400px 400px, 300px 300px, 500px 500px, 450px 450px;
+        animation: particles-move 20s linear infinite;
+    }
+
+    @keyframes particles-move {
+        0% {
+            background-position: 0 0, 0 0, 0 0, 0 0;
+        }
+        100% {
+            background-position: 400px 400px, 300px 300px, 500px 500px, 450px 450px;
+        }
+    }
+
+    /* Grid pattern animado */
+    .grid-pattern {
+        background-image: 
+            linear-gradient(rgba(26, 34, 89, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(26, 34, 89, 0.05) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: grid-move 30s linear infinite;
+    }
+
+    @keyframes grid-move {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: 50px 50px;
+        }
+    }
+
+    /* Nuevas animaciones para elementos flotantes */
+    .pulse-element {
+        animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 0.7;
+        }
+        50% {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+    }
+
+    .rotating-element-slow {
+        animation: rotate-slow 30s linear infinite;
+    }
+
+    @keyframes rotate-slow {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Mejoras en animaciones existentes */
+    .floating-element {
+        animation: float-enhanced 8s ease-in-out infinite;
+    }
+
+    @keyframes float-enhanced {
+        0%, 100% {
+            transform: translateY(0) rotate(0deg);
+        }
+        33% {
+            transform: translateY(-15px) rotate(5deg);
+        }
+        66% {
+            transform: translateY(10px) rotate(-5deg);
+        }
+    }
+
+    /* Mejoras en transiciones de pestañas */
+    .tab-content {
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .tab-content:not(.active) {
+        opacity: 0;
+        transform: translateY(20px);
+        display: none;
+    }
+
+    .tab-content.active {
+        opacity: 1;
+        transform: translateY(0);
+        display: block;
+    }
+
+    /* Mejoras en animaciones de cards */
+    .card-hover {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-hover::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.6s ease;
+    }
+
+    .card-hover:hover::before {
+        left: 100%;
+    }
+
+    .card-hover:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Mejoras en botones flotantes */
+    .floating-button {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .floating-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.6s ease;
+    }
+
+    .floating-button:hover::before {
+        left: 100%;
+    }
+
+    .floating-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Mejoras en animaciones de scroll */
+    .section-hidden {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .section-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Efecto de brillo en elementos interactivos */
+    .tab-button:hover i,
+    .floating-button:hover,
+    .card-hover:hover img {
+        filter: brightness(1.1);
+    }
+
+    /* BOTONES OPTIMIZADOS - SIN LÍNEAS, MÁS EJECUTIVOS */
+    .content-tabs-container {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .content-tabs {
+        display: flex;
+        justify-content: flex-start;
+        min-width: max-content;
+        padding: 0 1rem;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .tab-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 2rem;
+        color: #4a5568;
+        font-weight: 600;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-size: 0.9rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .tab-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.6s ease;
+    }
+
+    .tab-button:hover {
+        background: #1a2259;
+        color: white;
+        border-color: #1a2259;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 34, 89, 0.25);
+    }
+
+    .tab-button:hover::before {
+        left: 100%;
+    }
+
+    .tab-button.active {
+        background: #1a2259;
+        color: white;
+        border-color: #1a2259;
+        box-shadow: 0 6px 20px rgba(26, 34, 89, 0.2);
+        transform: translateY(-1px);
+    }
+
+    /* Para pantallas medianas y grandes */
+    @media (min-width: 768px) {
+        .content-tabs {
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .tab-button {
+            padding: 0.85rem 2rem;
+            font-size: 1rem;
+        }
+    }
+
+    /* CONTENIDO DE PESTAÑAS OPTIMIZADO */
+    .tab-content-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        padding: 1rem 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-content {
+        display: none;
+        width: 100%;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .tab-content-grid {
+        display: flex;
+        justify-content: flex-start;
+        gap: 2rem;
+        padding: 0 1rem;
+        width: max-content;
+        margin: 0 auto;
+    }
+
+    /* Para pantallas grandes, centramos el contenido */
+    @media (min-width: 1024px) {
+        .tab-content-grid {
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+    }
+
+    /* CARDS OPTIMIZADAS */
+    .tab-content-grid > div {
+        width: 320px;
+        flex-shrink: 0;
+    }
+
+    /* VIDEOS OPTIMIZADOS */
+    .videos-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .videos-layout {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .video-main {
+        width: 100%;
+    }
+
+    .video-sidebar {
+        width: 100%;
+    }
+
+    .video-list {
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-item {
+        display: flex;
+        padding: 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+
+    .video-item:hover {
+        background-color: #f7fafc;
+    }
+
+    .video-thumbnail {
+        width: 6rem;
+        height: 3.5rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        flex-shrink: 0;
+        margin-right: 1rem;
+    }
+
+    .video-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-info h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #1a2259;
+        margin-bottom: 0.25rem;
+        line-height: 1.3;
+    }
+
+    .video-info p {
+        font-size: 0.8rem;
+        color: #718096;
+    }
+
+    .video-embed {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .video-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* SCROLL OPTIMIZADO */
+    .content-tabs-container::-webkit-scrollbar,
+    .tab-content-wrapper::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .content-tabs-container::-webkit-scrollbar-track,
+    .tab-content-wrapper::-webkit-scrollbar-track {
+        background: #f1f5f9;
+        border-radius: 10px;
+    }
+
+    .content-tabs-container::-webkit-scrollbar-thumb,
+    .tab-content-wrapper::-webkit-scrollbar-thumb {
+        background: #cbd5e0;
+        border-radius: 10px;
+    }
+
+    .content-tabs-container::-webkit-scrollbar-thumb:hover,
+    .tab-content-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #a0aec0;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Funcionalidad de pestañas optimizada
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remover clase active de todos los botones y contenidos
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.style.opacity = '0';
+                });
+                
+                // Agregar clase active al botón clickeado
+                button.classList.add('active');
+                
+                // Mostrar el contenido correspondiente con animación
+                const tabId = button.getAttribute('data-tab') + '-tab';
+                const activeContent = document.getElementById(tabId);
+                activeContent.classList.add('active');
+                
+                // Forzar reflow para reiniciar la animación
+                void activeContent.offsetWidth;
+                
+                // Aplicar animación de entrada
+                setTimeout(() => {
+                    activeContent.style.opacity = '1';
+                }, 50);
+            });
+        });
+        
+        // Animación de elementos al hacer scroll - OPTIMIZADA
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                    
+                    // Animación escalonada para elementos dentro de la sección
+                    if (entry.target.classList.contains('tab-content-grid')) {
+                        const cards = entry.target.querySelectorAll('.card-hover');
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('section-visible');
+                            }, index * 150);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observar solo elementos visibles
+        document.querySelectorAll('.section-hidden').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Efecto de parallax suave para elementos flotantes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const floatingElements = document.querySelectorAll('.floating-element');
+            
+            floatingElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px) ${element.style.transform.includes('rotate') ? 'rotate(5deg)' : ''}`;
+            });
+        });
+    });
+</script>
+
+
+
+
+
+-->
